@@ -101,11 +101,11 @@ Formula.core_files.each do |fi|
       url = "#{bottle_spec.root_url}/#{filename}"
 
       file = HOMEBREW_CACHE/filename
-      FileUtils.rm_f file
       next if File.exist?("#{file}.checked")
+      FileUtils.rm_f file
 
       begin
-        curl url, "-o", file
+        curl "-s", url, "-o", file
         file.verify_checksum(checksum)
       rescue ErrorDuringExecution
         opoo "Failed to download #{url}"
