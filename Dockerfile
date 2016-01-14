@@ -2,15 +2,22 @@ FROM ruby
 
 MAINTAINER Yifan Gao "git@gaoyifan.com"
 
-RUN git clone git://github.com/gaoyifan/linuxbrew.git ~/.linuxbrew \
-    && git clone git://github.com/homebrew/homebrew.git ~/.linuxbrew/homebrew \
-    && export PATH="$HOME/.linuxbrew/bin:$PATH" \
-    && brew tap gaoyifan/homebrew-bottle-mirror \
-    && echo 'export PATH="$HOME/.linuxbrew/bin:$PATH"' >> ~/.bashrc \
-    && echo 'export HOMEBREW_BOTTLE_DOMAIN=http://homebrew.bintray.com' >> ~/.bashrc
+ENV CACHE_DIR="/etc/docker-homebrew-bottle-mirror"
+
+ENV TEMPLATES_DIR="${CACHE_DIR}/templates" \
+    ATTRIBUTE_FIX_LIST="${CACHE_DIR}/attribute_fix_list" \
+    DEFAULT_ENV="${CACHE_DIR}/default_env" \
+    MD5_CHECKLIST="${CACHE_DIR}/checklist" \
+    BUILD_SCRIPT="${CACHE_DIR}/build.sh"
+
+COPY docker/assets $CACHE_DIR
+
+COPY docker/entrypoint/entrypoint.sh /sbin/entrypoint.sh
+
+RUN /sbin/entrypoint.sh build
 
 VOLUME /root/.cache/Homebrew/
 
-COPY entrypoint.sh /sbin/entrypoint.sh
-
 ENTRYPOINT ["/sbin/entrypoint.sh"]
+
+CMD ["/sbin/sync.sh"]

@@ -1,0 +1,3 @@
+[submodule "docker/entrypoint"]
+	path = docker/entrypoint
+	url = https://github.com/gaoyifan/docker-entrypoint.git
