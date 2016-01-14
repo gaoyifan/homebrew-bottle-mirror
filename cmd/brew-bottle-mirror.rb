@@ -105,7 +105,7 @@ Formula.core_files.each do |fi|
       FileUtils.rm_f file
 
       begin
-        curl "-s", url, "-o", file
+        curl "-sS", url, "-o", file
         file.verify_checksum(checksum)
       rescue ErrorDuringExecution
         opoo "Failed to download #{url}"
