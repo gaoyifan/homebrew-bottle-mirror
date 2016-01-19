@@ -1,4 +1,14 @@
 #!/bin/bash
-cd ~/.linuxbrew/homebrew
-git pull
-brew bottle-mirror
+
+LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles/homebrew-bottles.log"}
+(
+    cd ~/.linuxbrew/homebrew
+    echo "===== SYNC STARTED AT $(date -R) ====="
+    echo "> RUN git pull origin master..."
+    git pull origin master
+    echo ""
+    echo "> RUN brew bottle-mirror..."
+    brew bottle-mirror
+    echo "===== SYNC FINISHED AT $(date -R) ====="
+) > $LOGFILE 2>&1
+savelog -c 50 $LOGFILE > /dev/null
