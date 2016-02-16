@@ -108,12 +108,12 @@ Formula.core_files.each do |fi|
         curl "-sS", url, "-o", file
         file.verify_checksum(checksum)
       rescue ErrorDuringExecution
-        opoo "Failed to download #{url}"
         FileUtils.rm_f file
+        opoo "Failed to download #{url}"
         next
       rescue ChecksumMismatchError => e
-        opoo e
         FileUtils.rm_f file
+        opoo "Checksum mismatch #{url}", e
         next
       end
       FileUtils.touch("#{file}.checked")
