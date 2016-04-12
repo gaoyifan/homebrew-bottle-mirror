@@ -18,6 +18,8 @@ RUN /sbin/entrypoint.sh build
 
 VOLUME /root/.cache/Homebrew/
 
+VOLUME /var/log/homebrew-bottles/
+
 ENTRYPOINT ["/sbin/entrypoint.sh"]
 
 CMD ["/sbin/sync.sh"]
