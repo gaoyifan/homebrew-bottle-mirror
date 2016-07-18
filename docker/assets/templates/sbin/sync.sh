@@ -2,7 +2,7 @@
 
 LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles/homebrew-bottles.log"}
 (
-    cd ~/.linuxbrew/homebrew-core
+    cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
     echo "===== SYNC STARTED AT $(date -R) ====="
     echo "> RUN git pull origin master..."
     git pull origin master

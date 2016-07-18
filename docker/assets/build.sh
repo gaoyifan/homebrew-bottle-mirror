@@ -1,7 +1,7 @@
 #!/bin/bash
-git clone git://github.com/gaoyifan/linuxbrew.git ~/.linuxbrew
-mkdir -p ~/.linuxbrew/homebrew-core
-cd  ~/.linuxbrew/homebrew-core
+git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+mkdir -p ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
+cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
 git init
 git remote add origin git://github.com/homebrew/homebrew-core.git
 export PATH="$HOME/.linuxbrew/bin:$PATH"
