@@ -3,9 +3,13 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles.log"}
 (
     cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
+    if [ ! -z $HOMEBREW_TAP ]; then
+        git remote set-url origin git://github.com/Homebrew/homebrew-${HOMEBREW_TAP}.git
+    fi
     echo "===== SYNC STARTED AT $(date -R) ====="
-    echo "> RUN git pull origin master..."
-    git pull origin master
+    echo "> update package info..."
+    git fetch --depth=1 origin master
+    git reset --hard origin/master
     echo ""
     echo "> RUN brew bottle-mirror..."
     brew bottle-mirror
