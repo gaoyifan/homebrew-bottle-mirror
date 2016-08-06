@@ -1,4 +1,5 @@
 #!/bin/bash
+apk add --no-cache ruby git curl
 git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 mkdir -p ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
 cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core

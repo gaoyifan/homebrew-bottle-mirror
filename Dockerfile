@@ -1,25 +1,16 @@
-FROM ruby
+FROM smartentry/alpine:3.4-beta
 
-MAINTAINER Yifan Gao "git@gaoyifan.com"
+MAINTAINER Yifan Gao <docker@yfgao.com>
 
-ENV CACHE_DIR="/etc/docker-homebrew-bottle-mirror"
+COPY docker /etc/docker-assets
 
-ENV TEMPLATES_DIR="${CACHE_DIR}/templates" \
-    ATTRIBUTE_FIX_LIST="${CACHE_DIR}/attribute_fix_list" \
-    DEFAULT_ENV="${CACHE_DIR}/default_env" \
-    MD5_CHECKLIST="${CACHE_DIR}/checklist" \
-    BUILD_SCRIPT="${CACHE_DIR}/build.sh"
+ENV HOMEBREW_BOTTLE_DOMAIN="http://homebrew.bintray.com" \
+    ENABLE_UNSET_ENV_VARIBLES=false
 
-COPY docker/assets $CACHE_DIR
+RUN smartentry.sh build
 
-COPY docker/entrypoint/entrypoint.sh /sbin/entrypoint.sh
+VOLUME /root/.cache/Homebrew /var/log
 
-RUN /sbin/entrypoint.sh build
+ENTRYPOINT ["/sbin/smartentry.sh"]
 
-VOLUME /root/.cache/Homebrew/
-
-VOLUME /var/log/homebrew-bottles/
-
-ENTRYPOINT ["/sbin/entrypoint.sh"]
-
-CMD ["/sbin/sync.sh"]
+CMD sync.sh

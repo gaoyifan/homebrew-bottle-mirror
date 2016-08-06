@@ -1,6 +1,6 @@
 #!/bin/bash
-
-LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles/homebrew-bottles.log"}
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles.log"}
 (
     cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
     echo "===== SYNC STARTED AT $(date -R) ====="
@@ -10,5 +10,5 @@ LOGFILE=${LOGFILE:-"/var/log/homebrew-bottles/homebrew-bottles.log"}
     echo "> RUN brew bottle-mirror..."
     brew bottle-mirror
     echo "===== SYNC FINISHED AT $(date -R) ====="
-) > $LOGFILE 2>&1
+) 2>&1 | tee $LOGFILE
 savelog -c 50 $LOGFILE > /dev/null
