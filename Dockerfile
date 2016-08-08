@@ -2,7 +2,7 @@ FROM smartentry/alpine:3.4-beta
 
 MAINTAINER Yifan Gao <docker@yfgao.com>
 
-ADD docker /etc/docker-assets
+ADD docker $ASSETS_DIR
 
 ENV HOMEBREW_BOTTLE_DOMAIN="http://homebrew.bintray.com" \
     ENABLE_UNSET_ENV_VARIBLES=false
