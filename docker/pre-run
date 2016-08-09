@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [ ! -z $DOCKER_UID ]; then
-    if [ -z $DOCKER_GID ]; then
-        DOCKER_GID=$DOCKER_UID
-    fi
-    if [ -z $DOCKER_USER ]; then
-        DOCKER_USER=docker-inner-user
-    fi
+if [[ $DOCKER_UID != 0 ]]; then
     chown -R $DOCKER_UID:$DOCKER_GID /root/
 fi
