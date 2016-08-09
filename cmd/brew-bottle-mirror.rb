@@ -111,10 +111,9 @@ Formula.core_files.each do |fi|
 
       file = HOMEBREW_CACHE/filename
       next if File.exist?("#{file}.checked")
-      FileUtils.rm_f file
 
       begin
-        curl "-sS", url, "-o", file
+        curl "-sS", "-C", "-", url, "-o", file
         file.verify_checksum(checksum)
       rescue ErrorDuringExecution
         FileUtils.rm_f file
