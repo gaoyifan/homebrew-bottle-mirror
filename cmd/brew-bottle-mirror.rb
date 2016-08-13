@@ -114,7 +114,7 @@ Formula.core_files.each do |fi|
       FileUtils.rm_f file
 
       begin
-        curl "-sS", url, "-o", file
+        curl "-sSL", "-m", "600", url, "-o", file
         file.verify_checksum(checksum)
       rescue ErrorDuringExecution
         FileUtils.rm_f file
