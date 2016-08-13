@@ -8,7 +8,7 @@ mirror tools for syncing homebrew bottle files.
 run the following command on your Mac:
 
 ```
-brew tap gaoyifan/homebrew-bottle-mirror
+brew tap gaoyifan/bottle-mirror
 brew bottle-mirror
 ```
 
