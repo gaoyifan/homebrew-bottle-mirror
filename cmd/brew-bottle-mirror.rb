@@ -95,6 +95,7 @@ Formula.core_files.each do |fi|
 
     bottle_spec = f.stable.bottle_specification
     bottle_spec.collector.keys.each do |os|
+      next if os == :x86_64_linux
       checksum = bottle_spec.collector[os]
       next unless checksum.hash_type == :sha256
       filename = Bottle::Filename.create(f, os, bottle_spec.revision)
