@@ -5,6 +5,7 @@ MAINTAINER Yifan Gao <docker@yfgao.com>
 ADD docker $ASSETS_DIR
 
 ENV HOMEBREW_BOTTLE_DOMAIN="http://homebrew.bintray.com" \
+    HOMEBREW_CACHE="/srv/data" \
     ENABLE_UNSET_ENV_VARIBLES=false
 
 RUN smartentry.sh build

@@ -17,7 +17,7 @@ brew bottle-mirror
 ```shell
 docker run -itd \
   --name=homebrew-bottles \
-  -v $YOUR_REPOSITORY_DIR:/root/.cache/Homebrew/ \
+  -v $YOUR_REPOSITORY_DIR:/srv/data \
   gaoyifan/homebrew-bottle-mirror
 ```
 
