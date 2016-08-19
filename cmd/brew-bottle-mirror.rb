@@ -90,7 +90,13 @@ end
 pool = ThreadPool.new(10)
 Formula.core_files.each do |fi|
   pool.process do
-    f = Formula[fi]
+    begin
+      f = Formula[fi]
+    rescue
+      opoo "#{fi}: something goes wrong."
+      next
+    end
+      
     next unless f.bottle_defined?
 
     bottle_spec = f.stable.bottle_specification
