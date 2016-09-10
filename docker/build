@@ -1,6 +1,8 @@
 #!/bin/bash
 apk add --no-cache ruby git curl ncurses
-git clone https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
+cd ~/.linuxbrew
+git apply $ASSETS_DIR/linuxbrew.patch
 mkdir -p ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
 cd ~/.linuxbrew/Library/Taps/homebrew/homebrew-core
 git init
