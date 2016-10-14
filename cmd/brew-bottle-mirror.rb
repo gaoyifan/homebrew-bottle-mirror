@@ -92,8 +92,10 @@ Formula.core_files.each do |fi|
   pool.process do
     begin
       f = Formula[fi]
-    rescue
+    rescue Exception => e
       opoo "#{fi}: something goes wrong."
+      puts e.message
+      puts e.backtrace.inspect
       next
     end
       
