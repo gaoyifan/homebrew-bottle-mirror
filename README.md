@@ -15,11 +15,30 @@ brew bottle-mirror
 ### docker
 
 ```shell
+# homebrew core repository
 docker run -itd \
   --name=homebrew-bottles \
   -v $YOUR_REPOSITORY_DIR:/srv/data \
   gaoyifan/homebrew-bottle-mirror
 ```
+
+```shell
+# homebrew tap repository
+docker run -itd \
+  --name=homebrew-bottles \
+  -e HOMEBREW_TAP=$tap \
+  -v $YOUR_REPOSITORY_DIR:/srv/data \
+  gaoyifan/homebrew-bottle-mirror
+```
+
+Some useful docker image environment:
+
+| Parameter              | Default value               | Description                              |
+| :--------------------- | --------------------------- | ---------------------------------------- |
+| DOCKER_UID             | 0                           | program uid inside docker container      |
+| HOMEBREW_TAP           | null                        | sync a specific tap  repository          |
+| HOMEBREW_BOTTLE_DOMAIN | http://homebrew.bintray.com | upstream  repository                     |
+| HOMEBREW_CACHE         | /srv/data                   | where the repository store inside the docker container |
 
 [more information for docker](https://hub.docker.com/r/gaoyifan/homebrew-bottle-mirror/)
 
