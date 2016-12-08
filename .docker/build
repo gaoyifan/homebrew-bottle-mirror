@@ -1,5 +1,5 @@
 #!/bin/bash
-apk add --no-cache ruby git curl ncurses
+apk add --no-cache ruby git curl ncurses ruby-json
 git clone --depth 1 https://github.com/Linuxbrew/brew.git ~/.linuxbrew
 cd ~/.linuxbrew
 git apply $ASSETS_DIR/linuxbrew.patch
