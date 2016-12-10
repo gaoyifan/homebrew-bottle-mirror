@@ -131,7 +131,7 @@ Formula.core_files.each do |fi|
         next
       rescue ChecksumMismatchError => e
         FileUtils.rm_f file
-        opoo "Checksum mismatch #{url}", e
+        opoo "Checksum mismatch #{url}"
         next
       end
       FileUtils.touch("#{file}.checked")
