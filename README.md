@@ -35,7 +35,7 @@ Some useful docker image environment:
 
 | Parameter              | Default value               | Description                              |
 | :--------------------- | --------------------------- | ---------------------------------------- |
-| DOCKER_UID             | 0                           | program uid inside docker container      |
+| DOCKER_UID             | 1000                        | program uid inside docker container      |
 | HOMEBREW_TAP           | null                        | sync a specific tap  repository          |
 | HOMEBREW_BOTTLE_DOMAIN | http://homebrew.bintray.com | upstream  repository                     |
 | HOMEBREW_CACHE         | /srv/data                   | where the repository store inside the docker container |

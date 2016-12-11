@@ -2,3 +2,4 @@ HOMEBREW_BOTTLE_DOMAIN      = http://homebrew.bintray.com
 HOMEBREW_CACHE              = /srv/data
 ENABLE_UNSET_ENV_VARIBLES   = false
 ENABLE_FIX_OWNER_OF_VOLUMES = true
+DOCKER_UID                  = 1000
