@@ -31,14 +31,24 @@ docker run -itd \
   gaoyifan/homebrew-bottle-mirror
 ```
 
-Some useful docker image environment:
+Some useful environment variables:
 
 | Parameter              | Default value               | Description                              |
 | :--------------------- | --------------------------- | ---------------------------------------- |
 | DOCKER_UID             | 1000                        | program uid inside docker container      |
-| HOMEBREW_TAP           | null                        | sync a specific tap  repository          |
+| HOMEBREW_TAP           | \<null\>                    | sync a specific tap  repository          |
 | HOMEBREW_BOTTLE_DOMAIN | http://homebrew.bintray.com | upstream  repository                     |
 | HOMEBREW_CACHE         | /srv/data                   | where the repository store inside the docker container |
+
+available HOMEBREW_TAP value:
+- dupes
+- games
+- gui
+- python
+- php
+- science
+- versions
+- x11
 
 [more information for docker](https://hub.docker.com/r/gaoyifan/homebrew-bottle-mirror/)
 
