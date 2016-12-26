@@ -1,4 +1,4 @@
-FROM smartentry/alpine:3.4-0.3.8
+FROM smartentry/alpine:3.4-0.3.13
 
 MAINTAINER Yifan Gao <docker@yfgao.com>
 
