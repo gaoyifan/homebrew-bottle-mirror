@@ -1,4 +1,6 @@
 # Homebrew Bottle Mirror
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror?ref=badge_shield)
+
 mirror tools for syncing homebrew bottle files.
 
 ## Usage
@@ -71,3 +73,7 @@ then load the new configration
 ```shell
 $ source ~/.bash_profile
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror?ref=badge_large)
