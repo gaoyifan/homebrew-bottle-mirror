@@ -119,22 +119,22 @@ Formula.core_files.each do |fi|
       url = "#{root_url}/#{filename}"
 
       file = HOMEBREW_CACHE/filename
-      next if File.exist?("#{file}.checked")
-      FileUtils.rm_f file
+      tmpfile = HOMEBREW_CACHE/"#{filename}.tmp"
+      next if File.exist?(file)
 
       begin
-        curl "-sSL", "-m", "600", url, "-o", file
-        file.verify_checksum(checksum)
+        curl "-sSL", "-m", "600", url, "-o", tmpfile
+        tmpfile.verify_checksum(checksum)
       rescue ErrorDuringExecution
-        FileUtils.rm_f file
+        FileUtils.rm_f tmpfile
         opoo "Failed to download #{url}"
         next
       rescue ChecksumMismatchError => e
-        FileUtils.rm_f file
+        FileUtils.rm_f tmpfile
         opoo "Checksum mismatch #{url}"
         next
       end
-      FileUtils.touch("#{file}.checked")
+      FileUtils.mv(tmpfile, file)
       ohai  "#{filename} downloaded"
 
     end
