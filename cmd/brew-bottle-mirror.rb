@@ -125,13 +125,13 @@ Formula.core_files.each do |fi|
       begin
         curl "-sSL", "-m", "600", url, "-o", tmpfile
         tmpfile.verify_checksum(checksum)
-      rescue ErrorDuringExecution
-        FileUtils.rm_f tmpfile
-        opoo "Failed to download #{url}"
-        next
       rescue ChecksumMismatchError => e
         FileUtils.rm_f tmpfile
-        opoo "Checksum mismatch #{url}"
+        opoo "Checksum mismatch #{url}, #{e}"
+        next
+      rescue Exception => e
+        FileUtils.rm_f tmpfile
+        opoo "Failed to download #{url}, #{e}"
         next
       end
       FileUtils.mv(tmpfile, file)
