@@ -149,6 +149,9 @@ Formula.core_files.each do |fi|
         FileUtils.rm_f tmpfile
         opoo "Failed to download #{url}, #{e}"
         next
+      rescue Exception => e
+        opoo "Unknown error #{e}"
+        next
       end
       FileUtils.mv(tmpfile, file)
       ohai  "#{filename} downloaded"
