@@ -106,7 +106,7 @@ Formula.core_files.each do |fi|
       next if os == :x86_64_linux
       checksum = bottle_spec.collector[os]
       next unless checksum.hash_type == :sha256
-      filename = Bottle::Filename.create(f, os, bottle_spec.rebuild)
+      filename = Bottle::Filename.create(f, os, bottle_spec.rebuild).bintray
       if ENV['HOMEBREW_TAP'].nil?
           root_url = bottle_spec.root_url
       else
