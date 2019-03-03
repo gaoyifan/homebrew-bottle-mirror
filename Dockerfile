@@ -6,6 +6,7 @@ ADD .docker $ASSETS_DIR
 
 RUN smartentry.sh build
 
-ADD . /root/.linuxbrew/Library/Taps/gaoyifan/homebrew-bottle-mirror
+ADD . /home/homebrew/.linuxbrew/homebrew/Library/Taps/gaoyifan/homebrew-bottle-mirror
+ADD . /home/linuxbrew/.linuxbrew/homebrew/Library/Taps/gaoyifan/homebrew-bottle-mirror
 
 VOLUME /srv/data /var/log

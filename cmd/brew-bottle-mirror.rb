@@ -88,6 +88,11 @@ end
 
 
 pool = ThreadPool.new(10)
+mac = false
+if ARGV[0] == "mac"
+  mac = true
+end
+
 Formula.core_files.each do |fi|
   pool.process do
     begin
@@ -103,12 +108,21 @@ Formula.core_files.each do |fi|
 
     bottle_spec = f.stable.bottle_specification
     bottle_spec.collector.keys.each do |os|
-      next if os == :x86_64_linux
+      if mac
+        next if os == :x86_64_linux
+      else
+        next if os != :x86_64_linux
+      end
       checksum = bottle_spec.collector[os]
       next unless checksum.hash_type == :sha256
       filename = Bottle::Filename.create(f, os, bottle_spec.rebuild).bintray
+      puts "root_url: #{bottle_spec.root_url}, filename: #{filename}"
       if ENV['HOMEBREW_TAP'].nil?
           root_url = bottle_spec.root_url
+	  if !mac
+	      # fix many linux package has wrong bottle root_url
+	      root_url = "https://linuxbrew.bintray.com/bottles"
+	  end
       else
           if ENV['HOMEBREW_BOTTLE_DOMAIN'].nil?
               root_url = "http://homebrew.bintray.com/bottles-#{ENV['HOMEBREW_TAP']}"
@@ -137,6 +151,8 @@ Formula.core_files.each do |fi|
       FileUtils.mv(tmpfile, file)
       ohai  "#{filename} downloaded"
 
+      # for debug, avoid taking up disk space quickly
+      # Kernel.exit(0)
     end
   end
 end

@@ -2,4 +2,6 @@
 
 if [[ $DOCKER_UID != 0 ]]; then
     chown -R $DOCKER_UID:$DOCKER_GID /root/
+    chown -R $DOCKER_UID:$DOCKER_GID /home/homebrew
+    chown -R $DOCKER_UID:$DOCKER_GID /home//linuxbrew
 fi

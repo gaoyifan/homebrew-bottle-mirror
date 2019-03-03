@@ -11,11 +11,14 @@ run the following command on your Mac:
 
 ```shell
 brew tap gaoyifan/bottle-mirror
-brew bottle-mirror
+brew bottle-mirror mac
+# or
+brew bottle-mirror linux
 ```
 
 ### docker
 
+#### macOS
 ```shell
 # homebrew core repository
 docker run -itd \
@@ -29,6 +32,15 @@ docker run -itd \
 docker run -itd \
   --name=homebrew-bottles \
   -e HOMEBREW_TAP=$tap \
+  -v $YOUR_REPOSITORY_DIR:/srv/data \
+  gaoyifan/homebrew-bottle-mirror
+```
+
+#### linux
+```bash
+docker run -itd \
+  --name=homebrew-bottles \
+  -e RUN_LINUXBREW=true \
   -v $YOUR_REPOSITORY_DIR:/srv/data \
   gaoyifan/homebrew-bottle-mirror
 ```
