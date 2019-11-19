@@ -119,10 +119,10 @@ Formula.core_files.each do |fi|
       puts "root_url: #{bottle_spec.root_url}, filename: #{filename}"
       if ENV['HOMEBREW_TAP'].nil?
           root_url = bottle_spec.root_url
-	  if !mac
-	      # fix many linux package has wrong bottle root_url
-	      root_url = "https://linuxbrew.bintray.com/bottles"
-	  end
+	      if !mac
+	          # fix many linux package has wrong bottle root_url
+	          root_url = "https://linuxbrew.bintray.com/bottles"
+	      end
       else
           if ENV['HOMEBREW_BOTTLE_DOMAIN'].nil?
               root_url = "http://homebrew.bintray.com/bottles-#{ENV['HOMEBREW_TAP']}"
