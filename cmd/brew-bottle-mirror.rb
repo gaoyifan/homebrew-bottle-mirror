@@ -156,3 +156,4 @@ Formula.core_files.each do |fi|
     end
   end
 end
+pool.join
