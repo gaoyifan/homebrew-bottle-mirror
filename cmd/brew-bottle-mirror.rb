@@ -93,6 +93,8 @@ if ARGV[0] == "mac"
   mac = true
 end
 
+flist = File.new(HOMEBREW_CACHE/"filelist.txt", "w")
+flist_lock = Mutex.new
 Formula.core_files.each do |fi|
   pool.process do
     begin
@@ -116,7 +118,10 @@ Formula.core_files.each do |fi|
       checksum = bottle_spec.collector[os]
       next unless checksum.hash_type == :sha256
       filename = Bottle::Filename.create(f, os, bottle_spec.rebuild).bintray
-      puts "root_url: #{bottle_spec.root_url}, filename: #{filename}"
+      flist_lock.synchronize {
+        flist.puts filename
+        puts "root_url: #{bottle_spec.root_url}, filename: #{filename}"
+      }
       if ENV['HOMEBREW_TAP'].nil?
           root_url = bottle_spec.root_url
 	      if !mac
@@ -157,3 +162,4 @@ Formula.core_files.each do |fi|
   end
 end
 pool.join
+flist.close
