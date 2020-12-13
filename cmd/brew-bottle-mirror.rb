@@ -115,7 +115,9 @@ Formula.core_files.each do |fi|
       end
       checksum = bottle_spec.collector[os]
       next unless checksum.hash_type == :sha256
-      filename = Bottle::Filename.create(f, os, bottle_spec.rebuild).bintray
+      b = Bottle::Filename.create(f, os, bottle_spec.rebuild)
+      filename = "#{b.name}-#{b.version}#{b.extname}"
+      filename_url_encode = b.bintray
       puts "root_url: #{bottle_spec.root_url}, filename: #{filename}"
       if ENV['HOMEBREW_TAP'].nil?
           root_url = bottle_spec.root_url
@@ -130,7 +132,7 @@ Formula.core_files.each do |fi|
               root_url = "#{ENV['HOMEBREW_BOTTLE_DOMAIN']}/bottles-#{ENV['HOMEBREW_TAP']}"
           end
       end
-      url = "#{root_url}/#{filename}"
+      url = "#{root_url}/#{filename_url_encode}"
 
       file = HOMEBREW_CACHE/filename
       tmpfile = HOMEBREW_CACHE/"#{filename}.tmp"
