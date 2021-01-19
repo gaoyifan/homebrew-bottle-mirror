@@ -1,5 +1,5 @@
 #!/bin/bash
-apk add --no-cache git curl ncurses ruby ruby-bigdecimal ruby-fiddle ruby-json ruby-etc ruby-irb ruby-json ruby-test-unit
+apk add --no-cache git curl ncurses ruby ruby-bigdecimal ruby-fiddle ruby-json ruby-etc ruby-irb ruby-json ruby-test-unit procps
 
 # for mac
 git clone --depth 1 https://github.com/Homebrew/brew.git /home/homebrew/.linuxbrew/homebrew
