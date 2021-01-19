@@ -115,7 +115,7 @@ Formula.core_files.each do |fi|
       else
         next if os != :x86_64_linux
       end
-      checksum = bottle_spec.collector[os]
+      checksum = bottle_spec.collector[os][:checksum]
       b = Bottle::Filename.create(f, os, bottle_spec.rebuild)
       filename = "#{b.name}-#{b.version}#{b.extname}"
       filename_url_encode = b.bintray
