@@ -116,7 +116,6 @@ Formula.core_files.each do |fi|
         next if os != :x86_64_linux
       end
       checksum = bottle_spec.collector[os]
-      next unless checksum.hash_type == :sha256
       b = Bottle::Filename.create(f, os, bottle_spec.rebuild)
       filename = "#{b.name}-#{b.version}#{b.extname}"
       filename_url_encode = b.bintray
