@@ -1,4 +1,6 @@
 # Homebrew Bottle Mirror
+**Deprecated: the project is not actively maintained, please check [ustclug/ustcmirror-images#homebrew-bottles](https://github.com/ustclug/ustcmirror-images#homebrew-bottles).**  Related to [#6](https://github.com/gaoyifan/homebrew-bottle-mirror/issues/6#issuecomment-788774659).
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fgaoyifan%2Fhomebrew-bottle-mirror?ref=badge_shield)
 
 mirror tools for syncing homebrew bottle files.
